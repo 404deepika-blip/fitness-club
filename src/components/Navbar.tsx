@@ -49,14 +49,14 @@ const Navbar = () => {
     return true;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -77,12 +77,10 @@ const Navbar = () => {
     )
     .then(() => {
       toast.success("🎉 Successfully Submitted!");
-
       setOpenForm(false);
       setFormData({ name: '', email: '', phone: '' });
     })
-    .catch((error) => {
-      console.log("ERROR:", error);
+    .catch(() => {
       toast.error("❌ Failed to send email!");
     })
     .finally(() => setLoading(false));
@@ -91,9 +89,13 @@ const Navbar = () => {
   return (
     <>
       {/* NAVBAR */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-gray-950/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
-      } relative`}>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-gray-950/95 backdrop-blur-sm py-4 shadow-lg'
+            : 'bg-transparent py-6'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="flex justify-between items-center">
@@ -102,14 +104,18 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <Dumbbell className="h-8 w-8 text-red-600" />
               <span className="text-2xl font-black text-white uppercase">
-                Fit<span className="text-red-600">Club</span>
+                Sabri<span className="text-red-600">Gym</span>
               </span>
             </div>
 
             {/* DESKTOP MENU */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="text-gray-300 hover:text-red-600 uppercase text-sm">
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-300 hover:text-red-600 uppercase text-sm"
+                >
                   {link.name}
                 </a>
               ))}
@@ -165,7 +171,7 @@ const Navbar = () => {
 
       {/* FORM */}
       {openForm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 overflow-y-auto">
 
           <div className="bg-white p-6 rounded-lg w-[90%] max-w-md relative">
 
@@ -177,7 +183,7 @@ const Navbar = () => {
             </button>
 
             <h2 className="text-2xl font-bold mb-4 text-center text-gray-900">
-              Join FitClub
+              Join SabriGym
             </h2>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
@@ -230,7 +236,7 @@ const Navbar = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-600 text-white py-2 rounded flex items-center justify-center gap-2"
+                className="w-full bg-red-600 text-white py-2 rounded"
               >
                 {loading ? "Sending..." : "Submit"}
               </button>

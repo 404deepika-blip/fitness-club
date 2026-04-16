@@ -6,25 +6,25 @@ const classesData = [
     title: 'Crossfit',
     image: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1470&auto=format&fit=crop',
     time: 'Mon, Wed, Fri - 6:00 AM',
-    trainer: 'John Doe'
+    // trainer: 'John Doe'
   },
   {
     title: 'Bodybuilding',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop',
     time: 'Tue, Thu - 5:00 PM',
-    trainer: 'Mike Smith'
+    // trainer: 'Mike Smith'
   },
   {
     title: 'Yoga',
     image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=1470&auto=format&fit=crop',
     time: 'Mon, Wed - 7:00 PM',
-    trainer: 'Sarah Connor'
+    // trainer: 'Sarah Connor'
   },
   {
     title: 'Cardio',
     image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1374&auto=format&fit=crop',
     time: 'Everyday - 8:00 AM',
-    trainer: 'Emma Watson'
+    // trainer: 'Emma Watson'
   }
 ];
 
@@ -60,7 +60,7 @@ const Classes = () => {
                 <h3 className="text-2xl font-bold uppercase text-white mb-2">{cls.title}</h3>
                 <div className="space-y-1 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                   <p className="text-red-500 text-sm font-medium">{cls.time}</p>
-                  <p className="text-gray-300 text-sm">Trainer: {cls.trainer}</p>
+                  {/* <p className="text-gray-300 text-sm">Trainer: {cls.trainer}</p> */}
                 </div>
                 <button className="flex items-center gap-2 text-white font-bold uppercase text-sm hover:text-red-500 transition-colors">
                   Join Class <ArrowRight className="w-4 h-4" />

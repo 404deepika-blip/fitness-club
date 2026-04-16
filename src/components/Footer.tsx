@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-6">
               <Dumbbell className="h-8 w-8 text-red-600" />
               <span className="text-2xl font-black tracking-wider text-white uppercase">
-                Fit<span className="text-red-600">Club</span>
+                Sabri<span className="text-red-600">Gym</span>
               </span>
             </div>
             <p className="text-gray-400 mb-6">
@@ -56,15 +56,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-red-600 flex-shrink-0 mt-1" />
-                <span>123 Fitness Street, Gym City, NY 10001</span>
+                <span>Kalukheda musandi road, unnao 209821</span>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 text-red-600 flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 96214 06319</span>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 text-red-600 flex-shrink-0" />
-                <span>info@fitclub.com</span>
+                <span>info@sabrigym.com</span>
               </li>
             </ul>
           </div>
@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} FitClub. All rights reserved.
+            &copy; {new Date().getFullYear()} SabriGym. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm text-gray-500">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
