@@ -32,7 +32,6 @@ const Navbar = () => {
     { name: 'Trainers', href: '#trainers' },
   ];
 
-  // 🔥 VALIDATION
   const validateForm = () => {
     const nameRegex = /^[A-Za-z\s]{2,50}$/;
     const phoneRegex = /^[0-9]{6,15}$/;
@@ -57,7 +56,6 @@ const Navbar = () => {
     });
   };
 
-  // 🔥 SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -81,19 +79,13 @@ const Navbar = () => {
       toast.success("🎉 Successfully Submitted!");
 
       setOpenForm(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: ''
-      });
+      setFormData({ name: '', email: '', phone: '' });
     })
     .catch((error) => {
       console.log("ERROR:", error);
       toast.error("❌ Failed to send email!");
     })
-    .finally(() => {
-      setLoading(false);
-    });
+    .finally(() => setLoading(false));
   };
 
   return (
@@ -101,11 +93,12 @@ const Navbar = () => {
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-gray-950/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
-      }`}>
+      } relative`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="flex justify-between items-center">
 
+            {/* LOGO */}
             <div className="flex items-center gap-2">
               <Dumbbell className="h-8 w-8 text-red-600" />
               <span className="text-2xl font-black text-white uppercase">
@@ -113,6 +106,7 @@ const Navbar = () => {
               </span>
             </div>
 
+            {/* DESKTOP MENU */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <a key={link.name} href={link.href} className="text-gray-300 hover:text-red-600 uppercase text-sm">
@@ -128,6 +122,7 @@ const Navbar = () => {
               </button>
             </div>
 
+            {/* HAMBURGER */}
             <div className="md:hidden">
               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? <X /> : <Menu />}
@@ -136,6 +131,36 @@ const Navbar = () => {
 
           </div>
         </div>
+
+        {/* MOBILE MENU */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-gray-900 shadow-lg z-50">
+            <div className="flex flex-col p-4 space-y-4">
+
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white"
+                >
+                  {link.name}
+                </a>
+              ))}
+
+              <button
+                onClick={() => {
+                  setOpenForm(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="bg-red-600 text-white py-2 rounded"
+              >
+                Join Now
+              </button>
+
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* FORM */}
@@ -157,7 +182,6 @@ const Navbar = () => {
 
             <form className="space-y-4" onSubmit={handleSubmit}>
 
-              {/* NAME */}
               <input
                 type="text"
                 name="name"
@@ -168,7 +192,6 @@ const Navbar = () => {
                 required
               />
 
-              {/* EMAIL */}
               <input
                 type="email"
                 name="email"
@@ -179,7 +202,6 @@ const Navbar = () => {
                 required
               />
 
-              {/* COUNTRY + PHONE */}
               <div className="flex gap-2">
 
                 <select
@@ -205,20 +227,12 @@ const Navbar = () => {
 
               </div>
 
-              {/* BUTTON */}
               <button
                 type="submit"
                 disabled={loading}
                 className="w-full bg-red-600 text-white py-2 rounded flex items-center justify-center gap-2"
               >
-                {loading ? (
-                  <>
-                    <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    Sending...
-                  </>
-                ) : (
-                  "Submit"
-                )}
+                {loading ? "Sending..." : "Submit"}
               </button>
 
             </form>
